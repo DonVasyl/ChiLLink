@@ -74,12 +74,12 @@ void CL_ERRORS_RegisterError(int pEnum, char *pName, char *pHelp,
   
   cl_errors_error_t *lNewError = CL_ERRORS_getNewError();
 
-  if(lTextLen > CL_ARGS_COMMNAMELEN_MAX) lTextLen = CL_ARGS_COMMNAMELEN_MAX;
+  if(lTextLen > CL_ERRORS_ERRORNAMELEN_MAX) lTextLen = CL_ERRORS_ERRORNAMELEN_MAX;
   strncpy(lNewError->name, pName, lTextLen);
 
   if(pHelp != NULL) {
     lTextLen = strlen(pHelp);
-    if(lTextLen > CL_ARGS_COMMHELPLEN_MAX) lTextLen = CL_ARGS_COMMHELPLEN_MAX;
+    if(lTextLen > CL_ERRORS_ERRORHELPLEN_MAX) lTextLen = CL_ERRORS_ERRORHELPLEN_MAX;
     strncpy(lNewError->help, pHelp, lTextLen);
   }
 
