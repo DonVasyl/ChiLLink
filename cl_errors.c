@@ -14,7 +14,7 @@ static cl_errors_error_t *CL_ERRORS_getNewError(void) {
   if(cl_errors_errors == NULL) {
     cl_errors_errors = malloc(sizeof(cl_errors_error_t));
     if(cl_errors_errors == NULL) {
-      printf("FATAL_ERROR: ERRORS: memory allocation error (error structure, root)!\n");
+      printf("FATAL_ERROR: ERRORS: Memory allocation error (error structure, root)!\n");
       exit(EXIT_FAILURE);
     }
     memset(cl_errors_errors, 0x00, sizeof(cl_errors_error_t));
@@ -28,7 +28,7 @@ static cl_errors_error_t *CL_ERRORS_getNewError(void) {
 
   lError->next = malloc(sizeof(cl_errors_error_t));
   if(lError->next == NULL) {
-    printf("FATAL_ERROR: ERRORS: memory allocation error (errors structure)!\n");
+    printf("FATAL_ERROR: ERRORS: Memory allocation error (errors structure)!\n");
     exit(EXIT_FAILURE);
   }
   memset(lError->next, 0x00, sizeof(cl_errors_error_t));
@@ -62,13 +62,13 @@ void CL_ERRORS_RegisterError(int pEnum, char *pName, char *pHelp,
 			     void (*pHandler)(void)) {
 
   if(pName == NULL) {
-    printf("ERROR: ERROR: Attempt to register an error with NULL name!\n");
+    printf("FATAL_ERROR: ERRORS: Attempt to register an error with NULL name!\n");
     exit(EXIT_FAILURE);
   }
 
   size_t lTextLen = strlen(pName);
   if(lTextLen < 0x01) {
-    printf("ERROR: ARGS: Attempt to register an error with empty name!\n");
+    printf("FATAL_ERROR: ERRORS: Attempt to register an error with empty name!\n");
     exit(EXIT_FAILURE);		
   }
   
@@ -129,7 +129,7 @@ int CL_ERRORS_GetCurrentErrorEnum(void) {
 
 void CL_ERRORS_ProcessErrors(void) {
   if(cl_errors_currentError != NULL) {
-    printf("ERROR_%s\n", cl_errors_currentError->name);
+    printf("\nERROR_%s\n", cl_errors_currentError->name);
     if(cl_errors_currentError->handler != NULL) {
       (cl_errors_currentError->handler)();
     }

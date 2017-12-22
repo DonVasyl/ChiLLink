@@ -232,6 +232,7 @@ void CL_ARGS_ProcessArguments(int pArgc, char *(*pArgv[])) {
 
   if (cl_args_commandCurrent == NULL) {
     CL_ERRORS_Error(cl_main_eError_eCommand, "No known command in command line.");
+    CL_MAIN_PrintUsage();
     return;
   }
   

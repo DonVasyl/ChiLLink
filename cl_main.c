@@ -28,8 +28,6 @@ void CL_MAIN_PrintUsage(void) {
 
   printf("\nPossible outputs:\n");
   CL_ERRORS_PrintErrorHelps();
-
-  printf("\n");
 }
 
 static void CL_MAIN_fatalErrorHandler(void) {
